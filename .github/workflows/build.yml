@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+          cache: true
 
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1
@@ -42,7 +43,7 @@ jobs:
         run: msbuild -p:Platform=x64 DmdExtensions.sln
 
       - name: Publish Release
-        run: dotnet publish Console/Console.csproj -f net472 
+        run: dotnet publish DmdExtensions.sln -f net472 
 
       # Upload artifacts
       - name: Upload artifacts
