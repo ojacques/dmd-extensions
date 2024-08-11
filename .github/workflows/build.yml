@@ -31,14 +31,14 @@ jobs:
         run: nuget restore DmdExtensions.sln
         
       - name: Restore DLLExport dependency
-        run: DllExport -action Restore -sln-file DmdExtensions.sln
+        run: .\DllExport -action Restore -sln-file DmdExtensions.sln
 
       # Build artifacts 
       - name: Build-X86
         run: msbuild -p:Platform=x86 DmdExtensions.sln
 
       # Build artifacts 
-      - name: Build-X86
+      - name: Build-X64
         run: msbuild -p:Platform=x64 DmdExtensions.sln
 
       - name: Publish Release
