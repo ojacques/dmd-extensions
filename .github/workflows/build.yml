@@ -53,11 +53,12 @@ jobs:
           path: bin\Release
           retention-days: 7
 
+          # 7z a -tzip dmdext-x64.zip .\DMD-Extensions\dmd-extensions\Console\bin\x64\Release\*
+          # 7z a -tzip dmdext-x86.zip .\DMD-Extensions\dmd-extensions\Console\bin\x86\Release\*
       - name: Generate zip bundle
         run: |
           # tree /f
-          7z a -tzip dmdext-x64.zip .\DMD-Extensions\dmd-extensions\Console\bin\x64\Release\*
-          7z a -tzip dmdext-x86.zip .\DMD-Extensions\dmd-extensions\Console\bin\x86\Release\*
+          7z a -tzip dmdext-x64.zip .\*
       
       - if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         name: Publish latest pre-release
