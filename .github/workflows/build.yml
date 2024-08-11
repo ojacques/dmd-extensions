@@ -39,7 +39,7 @@ jobs:
 
       # Build artifacts 
       - name: Build-X64
-        run: msbuild -/property:Platform=x64 /property:Configuration=Release DmdExtensions.sln
+        run: msbuild /property:Platform=x64 /property:Configuration=Release DmdExtensions.sln
 
       # - name: Publish Release
       #   run: dotnet publish DmdExtensions.sln -f net472 
