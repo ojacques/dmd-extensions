@@ -19,7 +19,7 @@ jobs:
       - name: Add dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 4.7.2
+          dotnet-version: 6.0.x
 
       - name: Restore Packages
         run: dotnet restore DMDExtensions.sln
@@ -29,7 +29,7 @@ jobs:
 
       # Build artifacts 
       - name: Build
-        run: dotnet publish -r win-x64 --self-contained=false DmdExtensions.sln
+        run: dotnet publish -r win-x64 --self-contained=false -f net472 DmdExtensions.sln
 
       # Upload artifacts
       - name: Upload artifacts
