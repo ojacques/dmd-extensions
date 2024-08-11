@@ -50,14 +50,14 @@ jobs:
         with:
           name: DMDEXT
           #path: bin\Release\net8.0-windows\win-x64\publish
-          path: bin\Release
+          path: .\Console\bin\
           retention-days: 7
 
-          # 7z a -tzip dmdext-x64.zip .\DMD-Extensions\dmd-extensions\Console\bin\x64\Release\*
-          # 7z a -tzip dmdext-x86.zip .\DMD-Extensions\dmd-extensions\Console\bin\x86\Release\*
       - name: Generate zip bundle
         run: |
           tree /f
+          7z a -tzip dmdext-x64.zip .\Console\bin\x64\Release\dmdext.exe PinMameDevice\bin\x64\Release\DmdDevice.dll PinMameDevice\DmdDevice.ini
+          7z a -tzip dmdext-x86.zip .\Console\bin\x86\Release\dmdext.exe PinMameDevice\bin\x86\Release\DmdDevice.dll PinMameDevice\DmdDevice.ini
          
       
       - if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
