@@ -28,18 +28,21 @@ jobs:
         uses: NuGet/setup-nuget@v1
       
       - name: Restore NuGet packages
-        run: nuget restore Another-Mirai-Native2.sln 
+        run: nuget restore DmdExtensions.sln
         
       - name: Restore DLLExport dependency
         run: DllExport -action Restore -sln-file DmdExtensions.sln
 
       # Build artifacts 
       - name: Build-X86
-        run: msbuild -p:Platform=x86 -f net472 DmdExtensions.sln
+        run: msbuild -p:Platform=x86 DmdExtensions.sln
 
       # Build artifacts 
       - name: Build-X86
-        run: msbuild -p:Platform=x64 -f net472 DmdExtensions.sln
+        run: msbuild -p:Platform=x64 DmdExtensions.sln
+
+      - name: Publish Release
+        run: dotnet publish Console/Console.csproj -f net472 
 
       # Upload artifacts
       - name: Upload artifacts
