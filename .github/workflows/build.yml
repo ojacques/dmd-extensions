@@ -35,11 +35,11 @@ jobs:
 
       # Build artifacts 
       - name: Build-X86
-        run: msbuild -p:Platform=x86 DmdExtensions.sln /property:Configuration=Release
+        run: msbuild /property:Platform=x86 /property:Configuration=Release DmdExtensions.sln
 
       # Build artifacts 
       - name: Build-X64
-        run: msbuild -p:Platform=x64 DmdExtensions.sln /property:Configuration=Release
+        run: msbuild -/property:Platform=x64 /property:Configuration=Release DmdExtensions.sln
 
       # - name: Publish Release
       #   run: dotnet publish DmdExtensions.sln -f net472 
@@ -56,8 +56,8 @@ jobs:
       - name: Generate zip bundle
         run: |
           # tree /f
-          7z a -tzip dmdext-x64.zip .\DMD-Extensions\Console\bin\x64\Release\*
-          7z a -tzip dmdext-x86.zip .\DMD-Extensions\Console\bin\x86\Release\*
+          7z a -tzip dmdext-x64.zip .\DMD-Extensions\dmd-extensions\Console\bin\x64\Release\*
+          7z a -tzip dmdext-x86.zip .\DMD-Extensions\dmd-extensions\Console\bin\x86\Release\*
       
       - if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         name: Publish latest pre-release
