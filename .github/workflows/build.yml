@@ -46,7 +46,6 @@ jobs:
 
       - name: Generate zip bundle
         run: |
-          tree /f
           7z a -tzip dmdext-x64.zip .\Console\bin\x64\Release\dmdext.exe .\Console\bin\x64\Release\dmdext.log.config .\PinMameDevice\bin\x64\Release\DmdDevice.dll .\PinMameDevice\DmdDevice.ini .\PinMameDevice\bin\x64\Release\DmdDevice.log.config dmdext.log.config
           7z a -tzip dmdext-x86.zip .\Console\bin\x86\Release\dmdext.exe .\Console\bin\x86\Release\dmdext.log.config .\PinMameDevice\bin\x86\Release\DmdDevice.dll .\PinMameDevice\DmdDevice.ini .\PinMameDevice\bin\x86\Release\DmdDevice.log.config
          
